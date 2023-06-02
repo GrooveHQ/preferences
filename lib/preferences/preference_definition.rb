@@ -33,7 +33,8 @@ module Preferences
 
     # Determines whether column backing this preference stores numberic values
     def number?
-      @column.number?
+      # @column.number?
+      false
     end
 
     # Typecasts the value based on the type of preference that was defined.
@@ -50,6 +51,8 @@ module Preferences
     def query(value)
       if !(value = type_cast(value))
         false
+      elsif number?
+        !value.zero?
       else
         !value.blank?
       end
