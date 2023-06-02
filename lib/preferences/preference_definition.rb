@@ -50,8 +50,6 @@ module Preferences
     def query(value)
       if !(value = type_cast(value))
         false
-      elsif number?
-        !value.zero?
       else
         !value.blank?
       end
