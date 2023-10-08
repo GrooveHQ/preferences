@@ -9,6 +9,7 @@ module Preferences
       options.assert_valid_keys(:default, :group_defaults)
 
       @type = args.first ? args.first.to_sym : :boolean
+      @type = :string if @type == :text
 
       @klass = "ActiveRecord::Type::#{@type.to_s.classify}".constantize.new
       # Create a column that will be responsible for typecasting
